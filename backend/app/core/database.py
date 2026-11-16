@@ -1,4 +1,5 @@
 import os
+import sys
 from typing import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
@@ -14,6 +15,15 @@ if _url.startswith("postgres://"):
 elif _url.startswith("postgresql://"):
     _url = _url.replace("postgresql://", "postgresql+asyncpg://", 1)
 
+# asyncpg expects ssl=require rather than sslmode=require and does not support channel_binding query param
+if "asyncpg" in _url:
+    _url = _url.replace("sslmode=require", "ssl=require")
+    _url = _url.replace("channel_binding=require&", "")
+    _url = _url.replace("&channel_binding=require", "")
+    _url = _url.replace("?channel_binding=require", "?")
+    if _url.endswith("?"):
+        _url = _url[:-1]
+
 engine_kwargs = {
     "echo": (settings.ENVIRONMENT == "development"),
 }
@@ -21,6 +31,11 @@ engine_kwargs = {
 if "sqlite" in _url:
     # SQLite configuration for local dev / testing
     pass
+elif os.getenv("TESTING") == "1" or "pytest" in sys.modules:
+    from sqlalchemy.pool import NullPool
+    engine_kwargs.update({
+        "poolclass": NullPool,
+    })
 else:
     # PostgreSQL / Neon configuration
     engine_kwargs.update({

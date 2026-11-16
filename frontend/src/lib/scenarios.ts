@@ -1,0 +1,58 @@
+import { TrainingScenario } from '../types';
+
+export const TRAINING_SCENARIOS: TrainingScenario[] = [
+  {
+    id: 'vehicle-collision',
+    title: 'Vehicle Collision',
+    category: 'Traffic Collision',
+    landmark: 'Ferry Building',
+    brief: 'Two-car collision on The Embarcadero near the Ferry Building with minor injuries and traffic blockage.',
+    suggestedPrompt: 'There is a two-car crash on The Embarcadero right outside the Ferry Building. One driver has minor arm lacerations and traffic is blocked.',
+    icon: 'Car',
+  },
+  {
+    id: 'report-of-smoke',
+    title: 'Report of Smoke',
+    category: 'Structure Fire / Smoke',
+    landmark: 'Union Square',
+    brief: 'Heavy black smoke rising from the rear service entrance of a commercial building near Union Square.',
+    suggestedPrompt: 'I see thick dark smoke coming out of the alley behind the stores at Union Square on Post Street. No visible flames yet, but people are evacuating.',
+    icon: 'Flame',
+  },
+  {
+    id: 'medical-assistance',
+    title: 'Medical Assistance',
+    category: 'Medical Emergency',
+    landmark: 'Mission Dolores Park',
+    brief: 'A visitor collapsed near the soccer field at Mission Dolores Park and is breathing but unresponsive.',
+    suggestedPrompt: 'Someone collapsed on the grass near the tennis courts at Mission Dolores Park. They are breathing but not responding to us. We need medical assistance.',
+    icon: 'HeartPulse',
+  },
+  {
+    id: 'earthquake-incident',
+    title: 'Earthquake Damage',
+    category: 'Structural Hazard',
+    landmark: 'San Francisco City Hall',
+    brief: 'Masonry cracked and debris on the sidewalk near City Hall following a simulated tremor.',
+    suggestedPrompt: 'Following the tremor, ornamental masonry fell onto the sidewalk on Dr Carlton B Goodlett Place outside City Hall. Two pedestrians have minor scrapes and the walkway is hazardous.',
+    icon: 'Activity',
+  },
+  {
+    id: 'missing-person',
+    title: 'Missing Person',
+    category: 'Search & Welfare',
+    landmark: 'Pier 39',
+    brief: 'A seven-year-old child wearing a red jacket separated from family near the carousel at Pier 39.',
+    suggestedPrompt: 'A seven-year-old boy wearing a red windbreaker and blue jeans got separated from his family by the carousel at Pier 39 about ten minutes ago.',
+    icon: 'UserSearch',
+  },
+  {
+    id: 'road-obstruction',
+    title: 'Road Obstruction',
+    category: 'Hazards & Obstruction',
+    landmark: 'Golden Gate Bridge',
+    brief: 'Large metal cargo crate fallen in the northbound right lane approaching the Golden Gate Bridge toll plaza.',
+    suggestedPrompt: 'There is a large metal crate blocking the right lane heading northbound toward the Golden Gate Bridge toll plaza, causing sudden lane swerving.',
+    icon: 'AlertTriangle',
+  },
+];
